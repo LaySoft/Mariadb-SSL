@@ -1,4 +1,7 @@
 <style>
+body {
+	background-color: #000000;
+}
 .ok {
 	color: #00DD00;
 }

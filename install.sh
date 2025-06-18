@@ -19,3 +19,6 @@ cp -R /tmp/phpMyAdmin-5.2.2-english/* web/pma
 rm -R /tmp/phpMyAdmin-5.2.2-english /tmp/phpMyAdmin-5.2.2-english.tar.gz
 
 cp docker/php/config.inc.php web/pma
+
+sudo rm -Rf _STORAGE
+mkdir _STORAGE

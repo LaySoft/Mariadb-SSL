@@ -1,4 +1,5 @@
-FROM docker.io/library/mariadb:11.8.2
+#FROM docker.io/library/mariadb:11.8.2
+FROM docker.io/library/mariadb:12.0.1-noble-rc
 RUN apt update
 RUN apt -y install mc
 COPY docker/mariadb/custom.cnf /etc/mysql/conf.d/
