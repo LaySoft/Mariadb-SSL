@@ -1,7 +1,6 @@
 clean:
 	make flush
 	reset
-	cp docker/php/config.inc.php web/public/pma
 	rm docker.log
 	podman-compose build --no-cache | tee -a docker.log
 	podman-compose up | tee -a docker.log

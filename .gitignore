@@ -1,5 +1,5 @@
 .idea
 _STORAGE
 ssl
-web/public/pma
+web/pma
 docker.log
