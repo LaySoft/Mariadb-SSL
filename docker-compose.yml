@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  nginx:
+    container_name: mariadb-nginx
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    volumes:
+      - ./web:/web:z
+    depends_on:
+      - php
+    ports:
+      - 8080:80
+    networks:
+      - halozat
+  php:
+    container_name: mariadb-php
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - ./web:/web:z
+    networks:
+      - halozat
+  mariadb:
+    container_name: mariadb-server
+    build:
+      context: .
+      dockerfile: docker/mariadb/Dockerfile
+    environment:
+      MYSQL_DATABASE: 'LUFI'
+      MYSQL_USER: 'lufi'
+      MYSQL_PASSWORD: 'lufilufi'
+      MYSQL_ROOT_PASSWORD: 'Lufi666Lufi'
+      TZ: 'Europe/Budapest'
+    volumes:
+    - ./_STORAGE:/var/lib/mysql:Z
+    networks:
+      - halozat
+networks:
+  halozat:

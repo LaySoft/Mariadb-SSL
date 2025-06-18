@@ -1,0 +1,5 @@
+.idea
+_STORAGE
+ssl
+web/public/pma
+docker.log

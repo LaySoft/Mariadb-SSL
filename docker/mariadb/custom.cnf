@@ -1,0 +1,8 @@
+[mysqld]
+ssl-ca=/etc/mysql/ssl/ca.crt
+ssl-cert=/etc/mysql/ssl/server.crt
+ssl-key=/etc/mysql/ssl/server.key
+
+[server]
+sql-mode="NO_ENGINE_SUBSTITUTION"
+thread_stack = 1024K
