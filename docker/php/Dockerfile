@@ -5,7 +5,6 @@ RUN apk upgrade
 RUN apk add --no-cache tzdata bash mc;
 ENV TZ = Europe/Budapest
 RUN docker-php-ext-install mysqli
-#COPY docker/php/config.inc.php /web/public/pma
 RUN mkdir /etc/ssl/pma
 COPY ssl/client.key /etc/ssl/pma
 RUN chmod 600 /etc/ssl/pma/client.key
