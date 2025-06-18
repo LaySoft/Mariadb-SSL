@@ -1,4 +1,11 @@
-<?php
+<style>
+.ok {
+	color: #00DD00;
+}
+.error {
+	color: #DD0000;
+}
+</style><?php
 
 error_reporting(E_ALL); ini_set('display_errors', TRUE);
 
@@ -20,30 +27,34 @@ if (mysqli_real_connect(
 	password: 'lufilufi',
 	database: 'LUFI'
 )) {
-	echo '<h1>Connection OK</h1>';
+	echo '<h1 class="ok">Connection OK</h1>';
 } else {
-	die('<h1>Connection ERROR!</h1>');
+	die('<h1 class="error">Connection ERROR!</h1>');
 }
 
 function Query($query) {
 	try {
 		return mysqli_query(mysql: MYSQLI, query: $query);
 	} catch (Exception $e) {
-		echo '<pre>' . $e->getMessage() . '</pre>';
+		echo '<pre class="error">' . $e->getMessage() . '</pre>';
 		return FALSE;
 	}
 }
 
 if ($handle = Query("SELECT VERSION()")) {
-	echo '<h1>Version: ' . mysqli_fetch_array($handle)[0] . '</h1>';
+	echo '<h1 class="ok">Version: ' . mysqli_fetch_array($handle)[0] . '</h1>';
 }
 
 if ($handle = Query("SHOW STATUS LIKE 'Ssl_cipher'")) {
-	echo '<h1>Cipher: ' . mysqli_fetch_array($handle)[1] . '</h1>';
+	if ($cipher = mysqli_fetch_array($handle)[1]) {
+		echo '<h1 class="ok">Connection encrypted: ' . $cipher . '</h1>';
+	} else {
+		echo '<h1 class="error">Connection not encrypted!</h1>';
+	}
 }
 
 if ($handle = Query("SELECT NOW()")) {
-	echo '<h1>' . mysqli_fetch_array($handle)[0] . '</h1>';
+	echo '<h1 class="ok">' . mysqli_fetch_array($handle)[0] . '</h1>';
 }
 
 die('<code>' . sha1(microtime()) . '</code>');
