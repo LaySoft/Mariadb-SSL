@@ -11,4 +11,7 @@ openssl req -new -key ssl/client.key -subj "/CN=php-app" -out ssl/client.csr
 openssl x509 -req -in ssl/client.csr -CA ssl/ca.crt -CAkey ssl/ca.key -set_serial 101 -out ssl/client.crt -days 365
 
 mkdir web/pma
+wget -P /tmp https://files.phpmyadmin.net/phpMyAdmin/5.2.2/phpMyAdmin-5.2.2-english.tar.gz
+tar -xzf /tmp/phpMyAdmin-5.2.2-english.tar.gz -C /tmp
+cp -R /tmp/phpMyAdmin-5.2.2-english/* web/pma
 cp docker/php/config.inc.php web/pma
