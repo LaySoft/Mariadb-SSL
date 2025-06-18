@@ -12,6 +12,8 @@ body {
 
 error_reporting(E_ALL); ini_set('display_errors', TRUE);
 
+echo '<h1 class="ok">PHP: ' . PHP_VERSION . '</h1>';
+
 define('MYSQLI', mysqli_init());
 
 mysqli_ssl_set(
@@ -30,9 +32,9 @@ if (mysqli_real_connect(
 	password: 'lufilufi',
 	database: 'LUFI'
 )) {
-	echo '<h1 class="ok">Connection OK</h1>';
+	echo '<h1 class="ok">MariaDB connection OK</h1>';
 } else {
-	die('<h1 class="error">Connection ERROR!</h1>');
+	die('<h1 class="error">MariaDB connection ERROR!</h1>');
 }
 
 function Query($query) {

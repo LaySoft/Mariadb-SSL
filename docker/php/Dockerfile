@@ -1,5 +1,5 @@
-#FROM php:8.4.8-fpm-alpine
-FROM php:8.3.22-fpm-alpine
+#FROM php:8.3.22-fpm-alpine
+FROM php:8.4.8-fpm-alpine
 RUN apk update
 RUN apk upgrade
 RUN apk add --no-cache tzdata bash mc;
