@@ -11,9 +11,9 @@ nginx:
 mariadb:
 	podman exec -it "$$(podman ps -q -f name=server)" /bin/bash
 flush:
-	podman stop -a -i
-	podman rm -a -f
-	podman system prune -a -f
-	podman image prune -a -f
-	podman volume rm -a -f
+	podman stop mariadb-nginx mariadb-php mariadb-server -i
+	podman rm mariadb-nginx mariadb-php mariadb-server -f
+	podman volume rm mariadb-nginx mariadb-php mariadb-server -f
+	podman system prune -f
+	podman image prune -f
 	podman volume prune -f
