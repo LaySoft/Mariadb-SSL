@@ -1,15 +1,15 @@
 rm -Rf ssl
 mkdir ssl
 openssl ecparam -name secp521r1 -genkey -noout -out ssl/ca.key
-openssl req -x509 -new -nodes -key ssl/ca.key -subj "/CN=MyCA" -days 365 -out ssl/ca.crt
+openssl req -x509 -new -nodes -key ssl/ca.key -subj "/CN=MyCA" -days 99999 -out ssl/ca.crt
 
 openssl ecparam -name secp521r1 -genkey -noout -out ssl/server.key
 openssl req -new -key ssl/server.key -subj "/CN=mariadb" -out ssl/server.csr
-openssl x509 -req -in ssl/server.csr -CA ssl/ca.crt -CAkey ssl/ca.key -set_serial 100 -out ssl/server.crt -days 365
+openssl x509 -req -in ssl/server.csr -CA ssl/ca.crt -CAkey ssl/ca.key -set_serial 100 -out ssl/server.crt -days 99999
 
 openssl ecparam -name secp521r1 -genkey -noout -out ssl/client.key
 openssl req -new -key ssl/client.key -subj "/CN=php-app" -out ssl/client.csr
-openssl x509 -req -in ssl/client.csr -CA ssl/ca.crt -CAkey ssl/ca.key -set_serial 101 -out ssl/client.crt -days 365
+openssl x509 -req -in ssl/client.csr -CA ssl/ca.crt -CAkey ssl/ca.key -set_serial 101 -out ssl/client.crt -days 99999
 
 rm -Rf web/pma
 mkdir web/pma
