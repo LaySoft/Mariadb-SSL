@@ -11,7 +11,7 @@ services:
     depends_on:
       - php
     ports:
-      - 8080:80
+      - 8888:80
     networks:
       - halozat
   php:

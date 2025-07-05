@@ -14,6 +14,6 @@ flush:
 	podman stop mariadb-nginx mariadb-php mariadb-server -i
 	podman rm mariadb-nginx mariadb-php mariadb-server -f
 	podman volume rm mariadb-nginx mariadb-php mariadb-server -f
-	podman system prune -f
-	podman image prune -f
+	podman system prune -a -f
+	podman image prune -a -f
 	podman volume prune -f

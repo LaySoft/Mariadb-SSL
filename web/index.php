@@ -62,5 +62,5 @@ if ($handle = Query("SELECT NOW()")) {
 	echo '<h1 class="ok">' . mysqli_fetch_array($handle)[0] . '</h1>';
 }
 
-die('<code>' . sha1(microtime()) . '</code>');
+die('<code class="ok">' . sha1(microtime()) . '</code>');
 
