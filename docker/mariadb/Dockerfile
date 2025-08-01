@@ -1,7 +1,6 @@
-#FROM docker.io/library/mariadb:11.8.2
 FROM docker.io/library/mariadb:12.0.1-noble-rc
 RUN apt update
-RUN apt -y install mc
+RUN apt -y install mc mariadb-plugin-connect mariadb-plugin-s3
 COPY docker/mariadb/custom.cnf /etc/mysql/conf.d/
 RUN chmod 644 /etc/mysql/conf.d/custom.cnf
 RUN mkdir /etc/mysql/ssl
