@@ -24,4 +24,5 @@ CREATE TABLE users_xml (
 ENGINE=CONNECT
 TABLE_TYPE=XML
 FILE_NAME='/var/lib/mysql/users.xml'
-ROW_TAG='person';
+OPTION_LIST='RowTag=person';
+
