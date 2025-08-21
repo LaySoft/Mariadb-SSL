@@ -14,5 +14,6 @@ RUN chown www-data:www-data /etc/ssl/pma/client.crt
 COPY ssl/ca.crt /etc/ssl/pma
 RUN chmod 644 /etc/ssl/pma/ca.crt
 RUN chown www-data:www-data /etc/ssl/pma/ca.crt
+COPY docker/php/php.ini /usr/local/etc/php/conf.d/
 WORKDIR /web
 CMD ["php-fpm"]

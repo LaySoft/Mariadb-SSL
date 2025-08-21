@@ -5,11 +5,11 @@ clean:
 	podman-compose build --no-cache | tee -a docker.log
 	podman-compose up | tee -a docker.log
 terminal:
-	podman exec -it "$$(podman ps -q -f name=php)" /bin/bash
+	podman exec -it "$$(podman ps -q -f name=mariadb-php)" /bin/bash
 nginx:
-	podman exec -it "$$(podman ps -q -f name=nginx)" /bin/bash
+	podman exec -it "$$(podman ps -q -f name=mariadb-nginx)" /bin/bash
 mariadb:
-	podman exec -it "$$(podman ps -q -f name=server)" /bin/bash
+	podman exec -it "$$(podman ps -q -f name=mariadb-server)" /bin/bash
 flush:
 	podman stop mariadb-nginx mariadb-php mariadb-server -i
 	podman rm mariadb-nginx mariadb-php mariadb-server -f
