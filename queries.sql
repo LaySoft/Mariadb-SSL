@@ -28,12 +28,36 @@ OPTION_LIST='RowTag=person';
 
 ###########################################################################################
 
+https://mariadb.com/docs/server/reference/data-types/string-data-types/enum?utm_source=chatgpt.com
+
 CREATE TABLE `enum_test` (
-  `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `duma` int(11) NOT NULL,
-  `enum_null` enum('A','B') DEFAULT NULL,
-  `enum_nodef` enum('A','B') NOT NULL,
-  `enum_def` enum('A','B') NOT NULL DEFAULT 'B',
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `enum_column` enum('N','Y') NOT NULL,
+  `datum` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_general_ci;
+
+INSERT INTO enum_test (datum) VALUES (NOW());
+SELECT * FROM enum_test;
+
+DELIMITER $$
+CREATE TRIGGER `test_trigger` BEFORE UPDATE ON `enum_test` FOR EACH ROW BEGIN
+END
+$$
+DELIMITER ;
+
+INSERT INTO enum_test (datum) VALUES (NOW());
+SELECT * FROM enum_test;
+
+# 10.6.23 bug
+# 10.11.14 bug
+# 11.2.2 good
+# 11.2.6 good
+# 11.3.2 good
+# 11.4.8 bug
+# 11.8.3 bug
+# 12.0.2 bug
+# 12.1.1 bug
 
