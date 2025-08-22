@@ -42,6 +42,12 @@ CREATE TABLE `enum_test` (
 INSERT INTO enum_test (datum) VALUES (NOW());
 SELECT * FROM enum_test;
 
++----+-------------+---------------------+
+| id | enum_column | datum               |
++----+-------------+---------------------+
+|  1 | N           | 2025-08-22 10:05:36 |
++----+-------------+---------------------+
+
 DELIMITER $$
 CREATE TRIGGER `test_trigger` BEFORE UPDATE ON `enum_test` FOR EACH ROW BEGIN
 END
@@ -50,6 +56,13 @@ DELIMITER ;
 
 INSERT INTO enum_test (datum) VALUES (NOW());
 SELECT * FROM enum_test;
+
++----+-------------+---------------------+
+| id | enum_column | datum               |
++----+-------------+---------------------+
+|  1 | N           | 2025-08-22 10:05:36 |
+|  2 |             | 2025-08-22 10:05:36 |
++----+-------------+---------------------+
 
 # 10.6.23 bug
 # 10.11.14 bug
@@ -61,3 +74,4 @@ SELECT * FROM enum_test;
 # 12.0.2 bug
 # 12.1.1 bug
 
+https://jira.mariadb.org/browse/MDEV-37481
