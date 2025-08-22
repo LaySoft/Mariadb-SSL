@@ -7,6 +7,9 @@ FROM docker.io/library/mariadb:12.1.1-noble-rc
 #FROM docker.io/library/mariadb:11.2.2-jammy
 #FROM docker.io/library/mariadb:10.11.14-jammy
 #FROM docker.io/library/mariadb:10.6.23-jammy
+#FROM docker.io/library/mysql:latest
+#FROM docker.io/library/mysql:8.4.6
+#FROM docker.io/library/mysql:8.0.43
 RUN apt update
 RUN apt -y install mc mariadb-plugin-connect mariadb-plugin-s3
 COPY docker/mariadb/custom.cnf /etc/mysql/conf.d/
