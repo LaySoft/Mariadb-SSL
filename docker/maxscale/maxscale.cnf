@@ -29,6 +29,13 @@ servers=server1
 user=root
 password=Lufi666Lufi
 
+[Read-Write-Service]
+type=service
+router=readwritesplit
+servers=server1
+user=root
+password=Lufi666Lufi
+
 # Listener - MaxScale port 4000
 [SingleListener]
 type=listener
