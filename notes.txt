@@ -1,0 +1,2 @@
+mariadb -h mariadb-server -P 3306 -u root -pLufi666Lufi --ssl=0
+mariadb -h mariadb-maxscale -P 4000 -u maxroot -pmaxLufi666Lufi --ssl=0

@@ -36,6 +36,20 @@ services:
       TZ: 'Europe/Budapest'
     volumes:
     - ./_STORAGE:/var/lib/mysql:Z
+    ports:
+      - "3306:3306"
+    networks:
+      - halozat
+  maxscale:
+    container_name: mariadb-maxscale
+    build:
+      context: .
+      dockerfile: docker/maxscale/Dockerfile
+    ports:
+      - "4000:4000"   # ezen keresztül éred el a DB-t
+      - "8989:8989"   # webes admin GUI
+    depends_on:
+      - mariadb
     networks:
       - halozat
 networks:
