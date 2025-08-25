@@ -15,8 +15,8 @@ protocol=MariaDBBackend
 type=service
 router=readconnroute
 servers=server1
-user=maxroot
-password=maxLufi666Lufi
+user=root
+password=Lufi666Lufi
 
 # Listener - MaxScale port 4000
 [SingleListener]
