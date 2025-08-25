@@ -1,7 +1,7 @@
 [maxscale]
 threads=auto
-admin_host = 0.0.0.0
-admin_port = 8989
+admin_host=0.0.0.0
+admin_port=8989
 admin_secure_gui=false
 
 [server1]
@@ -9,6 +9,17 @@ type=server
 address=mariadb-server
 port=3306
 protocol=MariaDBBackend
+
+[Monitor1]
+type=monitor
+module=mariadbmon
+user=root
+password=Lufi666Lufi
+handle_events=false
+monitor_interval=2000ms
+backend_connect_timeout = 3s
+backend_connect_attempts = 5
+servers=server1
 
 # Service - minden kapcsolat ide érkezik
 [SingleService]
