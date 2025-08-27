@@ -21,7 +21,6 @@ backend_connect_timeout=3s
 backend_connect_attempts=5
 servers=server1
 
-# Service - minden kapcsolat ide érkezik
 [SingleService]
 type=service
 router=readconnroute
@@ -30,14 +29,6 @@ user=root
 password=Lufi666Lufi
 version_string=MariaDB-MaxScale
 
-[Read-Write-Service]
-type=service
-router=readwritesplit
-servers=server1
-user=root
-password=Lufi666Lufi
-
-# Listener - MaxScale port 4000
 [SingleListener]
 type=listener
 service=SingleService
