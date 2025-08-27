@@ -30,7 +30,8 @@ if (mysqli_real_connect(
 	hostname: 'mariadb',
 	username: 'lufi',
 	password: 'lufilufi',
-	database: 'LUFI'
+	database: 'LUFI',
+	port: 3306
 )) {
 	echo '<h1 class="ok">MariaDB connection OK</h1>';
 } else {
