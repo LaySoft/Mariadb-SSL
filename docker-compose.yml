@@ -28,8 +28,6 @@ services:
     build:
       context: .
       dockerfile: docker/mariadb/Dockerfile
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_DATABASE: 'LUFI'
       MYSQL_USER: 'lufi'
@@ -46,7 +44,6 @@ services:
       context: .
       dockerfile: docker/maxscale/Dockerfile
     ports:
-      - "4000:4000"
       - "8989:8989"
     depends_on:
       - mariadb
