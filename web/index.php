@@ -1,6 +1,7 @@
 <style>
 body {
 	background-color: #000000;
+	color: #FFFFFF;
 }
 .ok {
 	color: #00DD00;
@@ -16,6 +17,7 @@ echo '<h1 class="ok">PHP: ' . PHP_VERSION . '</h1>';
 
 define('MYSQLI', mysqli_init());
 
+/*
 mysqli_ssl_set(
 	mysql: MYSQLI,
 	key: '/etc/ssl/pma/client.key',
@@ -24,14 +26,15 @@ mysqli_ssl_set(
 	ca_path: NULL,
 	cipher_algos: NULL
 );
+*/
 
 if (mysqli_real_connect(
 	mysql: MYSQLI,
-	hostname: 'mariadb',
+	hostname: 'maxscale',
 	username: 'lufi',
 	password: 'lufilufi',
 	database: 'LUFI',
-	port: 3306
+	port: 4000
 )) {
 	echo '<h1 class="ok">MariaDB connection OK</h1>';
 } else {
