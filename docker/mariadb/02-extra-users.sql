@@ -9,11 +9,4 @@ CREATE USER 'maxscale_service'@'%' IDENTIFIED BY 'servicepass';
 GRANT SELECT ON mysql.* TO 'maxscale_service'@'%';
 GRANT SHOW DATABASES ON *.* TO 'maxscale_service'@'%';
 
-GRANT SELECT ON mysql.user TO 'maxscale_service'@'%';
-GRANT SELECT ON mysql.db TO 'maxscale_service'@'%';
-GRANT SELECT ON mysql.procs_priv TO 'maxscale_service'@'%';
-GRANT SELECT ON mysql.tables_priv TO 'maxscale_service'@'%';
-GRANT SELECT ON mysql.columns_priv TO 'maxscale_service'@'%';
-GRANT SELECT ON mysql.proxies_priv TO 'maxscale_service'@'%';
-
 FLUSH PRIVILEGES;

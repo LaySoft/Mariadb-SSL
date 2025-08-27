@@ -35,3 +35,13 @@ service=SingleService
 protocol=MariaDBClient
 port=4000
 
+[SSL-Listener]
+type=listener
+service=SingleService
+protocol=MariaDBClient
+port=4443
+ssl=true
+ssl_cert=/etc/maxscale/ssl/server.crt
+ssl_key=/etc/maxscale/ssl/server.key
+ssl_ca=/etc/maxscale/ssl/ca.crt
+
