@@ -28,6 +28,8 @@ services:
     build:
       context: .
       dockerfile: docker/mariadb/Dockerfile
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: 'LUFI'
       MYSQL_USER: 'lufi'

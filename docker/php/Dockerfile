@@ -1,7 +1,7 @@
 FROM php:8.5.0beta1-fpm-alpine
 RUN apk update
 RUN apk upgrade
-RUN apk add --no-cache tzdata bash mc;
+RUN apk add --no-cache tzdata bash mc mariadb-client;
 ENV TZ = Europe/Budapest
 RUN docker-php-ext-install mysqli
 RUN mkdir /etc/ssl/pma

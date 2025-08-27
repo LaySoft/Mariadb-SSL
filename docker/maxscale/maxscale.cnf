@@ -13,12 +13,12 @@ protocol=MariaDBBackend
 [Monitor1]
 type=monitor
 module=mariadbmon
-user=root
-password=Lufi666Lufi
+user=maxscale_monitor
+password=monitorpass
 handle_events=false
 monitor_interval=2000ms
-backend_connect_timeout = 3s
-backend_connect_attempts = 5
+backend_connect_timeout=3s
+backend_connect_attempts=5
 servers=server1
 
 # Service - minden kapcsolat ide érkezik
@@ -28,6 +28,7 @@ router=readconnroute
 servers=server1
 user=root
 password=Lufi666Lufi
+version_string=MariaDB-MaxScale
 
 [Read-Write-Service]
 type=service
