@@ -2,6 +2,8 @@ mariadb -h mariadb-server -P 3306 -u root -pLufi666Lufi --ssl=0
 
 mariadb -h mariadb-maxscale -P 4000 -u lufi -plufilufi --ssl=0 LUFI
 
+mariadb -h mariadb-maxscale -P 4443 -u lufi -plufilufi LUFI
+
 tail -f /var/log/maxscale/maxscale.log
 
 less /var/log/maxscale/maxscale.log
