@@ -41,7 +41,7 @@ service=SingleService
 protocol=MariaDBClient
 port=4443
 ssl=true
-ssl_cert=/etc/maxscale/ssl/mariadb_server.crt
-ssl_key=/etc/maxscale/ssl/mariadb_server.key
+ssl_cert=/etc/maxscale/ssl/maxscale_server.crt
+ssl_key=/etc/maxscale/ssl/maxscale_server.key
 ssl_ca=/etc/maxscale/ssl/ca.crt
 

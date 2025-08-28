@@ -17,7 +17,6 @@ echo '<h1 class="ok">PHP: ' . PHP_VERSION . '</h1>';
 
 define('MYSQLI', mysqli_init());
 
-/*
 mysqli_ssl_set(
 	mysql: MYSQLI,
 	key: '/etc/ssl/pma/php_client.key',
@@ -26,19 +25,22 @@ mysqli_ssl_set(
 	ca_path: NULL,
 	cipher_algos: NULL
 );
-*/
+
+//$host = 'mariadb'; $port = 3306;
+$host = 'maxscale'; $port = 4443;
 
 if (mysqli_real_connect(
 	mysql: MYSQLI,
-	hostname: 'maxscale',
+	hostname: $host,
 	username: 'lufi',
 	password: 'lufilufi',
 	database: 'LUFI',
-	port: 4000
+	port: $port,
+	flags: MYSQLI_CLIENT_SSL
 )) {
-	echo '<h1 class="ok">MariaDB connection OK</h1>';
+	echo '<h1 class="ok">Connection OK</h1>';
 } else {
-	die('<h1 class="error">MariaDB connection ERROR!</h1>');
+	die('<h1 class="error">Connection ERROR!</h1>');
 }
 
 function Query($query) {
@@ -55,10 +57,24 @@ if ($handle = Query("SELECT VERSION()")) {
 }
 
 if ($handle = Query("SHOW STATUS LIKE 'Ssl_cipher'")) {
+	while ($tomb = mysqli_fetch_array($handle)) {
+		echo '<pre>' . print_r($tomb, TRUE) . '</pre>';
+	}
 	if ($cipher = mysqli_fetch_array($handle)[1]) {
-		echo '<h1 class="ok">Connection encrypted: ' . $cipher . '</h1>';
+		echo '<h1 class="ok">Server connection encrypted: ' . $cipher . '</h1>';
 	} else {
-		echo '<h1 class="error">Connection not encrypted!</h1>';
+		echo '<h1 class="error">Server connection not encrypted!</h1>';
+	}
+}
+
+if ($handle = Query("SHOW SESSION STATUS LIKE 'Ssl_cipher%'")) {
+	while ($tomb = mysqli_fetch_array($handle)) {
+		echo '<pre>' . print_r($tomb, TRUE) . '</pre>';
+	}
+	if ($cipher = mysqli_fetch_array($handle)[1]) {
+		echo '<h1 class="ok">Client connection encrypted: ' . $cipher . '</h1>';
+	} else {
+		echo '<h1 class="error">Client connection not encrypted!</h1>';
 	}
 }
 

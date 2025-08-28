@@ -27,10 +27,12 @@ $i++;
 /* Authentication type */
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = 'mariadb';
 $cfg['Servers'][$i]['compress'] = FALSE;
 $cfg['Servers'][$i]['AllowNoPassword'] = FALSE;
 $cfg['Servers'][1]['ssl'] = TRUE;
+$cfg['Servers'][1]['ssl_verify'] = TRUE;
+//$cfg['Servers'][$i]['host'] = 'mariadb'; $cfg['Servers'][$i]['port'] = 3306;
+$cfg['Servers'][$i]['host'] = 'maxscale'; $cfg['Servers'][$i]['port'] = 4443;
 $cfg['Servers'][1]['ssl_key']  = '/etc/ssl/pma/php_client.key';
 $cfg['Servers'][1]['ssl_cert'] = '/etc/ssl/pma/php_client.crt';
 $cfg['Servers'][1]['ssl_ca']   = '/etc/ssl/pma/ca.crt';
