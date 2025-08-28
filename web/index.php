@@ -43,6 +43,23 @@ if (mysqli_real_connect(
 	die('<h1 class="error">Connection ERROR!</h1>');
 }
 
+$ch = curl_init('http://maxscale:8989/v1/sessions');
+curl_setopt($ch, CURLOPT_USERPWD, 'admin:mariadb');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+$sessions = json_decode($response, TRUE);
+
+$handle = Query("SELECT CONNECTION_ID()");
+$conn_id = mysqli_fetch_array($handle)[0];
+
+foreach ($sessions['data'] as $session) {
+	//echo '<pre>' . print_r($session, TRUE) . '</pre>';
+	if ($session['attributes']['connections'][0]['connection_id'] == $conn_id) {
+		echo '<h1>' . $session['attributes']['client']['cipher'] . '</h1>';
+		break;
+	}
+}
+
 function Query($query) {
 	try {
 		return mysqli_query(mysql: MYSQLI, query: $query);
@@ -57,9 +74,6 @@ if ($handle = Query("SELECT VERSION()")) {
 }
 
 if ($handle = Query("SHOW STATUS LIKE 'Ssl_cipher'")) {
-	while ($tomb = mysqli_fetch_array($handle)) {
-		echo '<pre>' . print_r($tomb, TRUE) . '</pre>';
-	}
 	if ($cipher = mysqli_fetch_array($handle)[1]) {
 		echo '<h1 class="ok">Server connection encrypted: ' . $cipher . '</h1>';
 	} else {
@@ -68,9 +82,6 @@ if ($handle = Query("SHOW STATUS LIKE 'Ssl_cipher'")) {
 }
 
 if ($handle = Query("SHOW SESSION STATUS LIKE 'Ssl_cipher%'")) {
-	while ($tomb = mysqli_fetch_array($handle)) {
-		echo '<pre>' . print_r($tomb, TRUE) . '</pre>';
-	}
 	if ($cipher = mysqli_fetch_array($handle)[1]) {
 		echo '<h1 class="ok">Client connection encrypted: ' . $cipher . '</h1>';
 	} else {
