@@ -19,3 +19,6 @@ flush:
 	podman system prune -a -f
 	podman image prune -a -f
 	podman volume prune -f
+reset-database:
+	sudo rm -Rf _STORAGE
+	mkdir _STORAGE

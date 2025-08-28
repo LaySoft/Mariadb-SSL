@@ -20,8 +20,8 @@ define('MYSQLI', mysqli_init());
 /*
 mysqli_ssl_set(
 	mysql: MYSQLI,
-	key: '/etc/ssl/pma/client.key',
-	certificate: '/etc/ssl/pma/client.crt',
+	key: '/etc/ssl/pma/php_client.key',
+	certificate: '/etc/ssl/pma/php_client.crt',
 	ca_certificate: '/etc/ssl/pma/ca.crt',
 	ca_path: NULL,
 	cipher_algos: NULL

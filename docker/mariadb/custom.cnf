@@ -1,7 +1,7 @@
 [mysqld]
 ssl-ca=/etc/mysql/ssl/ca.crt
-ssl-cert=/etc/mysql/ssl/server.crt
-ssl-key=/etc/mysql/ssl/server.key
+ssl-cert=/etc/mysql/ssl/mariadb_server.crt
+ssl-key=/etc/mysql/ssl/mariadb_server.key
 
 [server]
 sql-mode="NO_ENGINE_SUBSTITUTION"
