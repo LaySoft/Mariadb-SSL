@@ -1,6 +1,6 @@
 #FROM docker.io/library/mariadb:12.1.1-noble-rc
-#FROM docker.io/library/mariadb:12.0.2-noble
-FROM docker.io/library/mariadb:11.8.3-noble
+FROM docker.io/library/mariadb:12.0.2-noble
+#FROM docker.io/library/mariadb:11.8.3-noble
 #FROM docker.io/library/mariadb:11.4.8-noble
 #FROM docker.io/library/mariadb:11.3.2-jammy
 #FROM docker.io/library/mariadb:11.2.6-jammy

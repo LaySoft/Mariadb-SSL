@@ -9,4 +9,7 @@ CREATE USER 'maxscale_service'@'%' IDENTIFIED BY 'servicepass';
 GRANT SELECT ON mysql.* TO 'maxscale_service'@'%';
 GRANT SHOW DATABASES ON *.* TO 'maxscale_service'@'%';
 
+CREATE USER 'laysoft'@'%' IDENTIFIED BY 'lufilufi';
+GRANT ALL PRIVILEGES ON `LUFI`.* TO `laysoft`@`%` WITH GRANT OPTION;
+
 FLUSH PRIVILEGES;
