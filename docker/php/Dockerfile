@@ -1,7 +1,8 @@
-FROM php:8.5.0beta2-fpm-alpine
+FROM php:8.5.0beta3-fpm-alpine
 RUN apk update
 RUN apk upgrade
-RUN apk add --no-cache tzdata bash mc mariadb-client;
+#RUN apk add --no-cache tzdata bash mc;
+RUN apk add --no-cache tzdata bash mc brotli-dev $PHPIZE_DEPS;
 ENV TZ = Europe/Budapest
 RUN docker-php-ext-install mysqli
 RUN mkdir /etc/ssl/pma
