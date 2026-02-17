@@ -16,9 +16,6 @@ flush:
 	podman stop mariadb-nginx mariadb-php mariadb-server mariadb-maxscale -i
 	podman rm mariadb-nginx mariadb-php mariadb-server mariadb-maxscale -f
 	podman volume rm mariadb-nginx mariadb-php mariadb-server mariadb-maxscale -f
-	podman system prune -a -f
-	podman image prune -a -f
-	podman volume prune -f
 reset-database:
 	sudo rm -Rf _STORAGE
 	mkdir _STORAGE
